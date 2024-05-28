@@ -6,7 +6,7 @@ export class Gameboard {
     this.rows = 10;
     this.columns = 10;
     this.board = [];
-    this.missedAttack = [];
+    this.missedAttacks = [];
     this.ships = [];
 
     for (let i = 0; i < this.rows; i++) {
@@ -24,27 +24,27 @@ export class Gameboard {
   placeShip(ship, startX, startY, direction) {
     if (direction === "vertical") {
       //if coordinates exceed the board, return false
-      if (startX + ship.length > this.columns || startX < 0) return false;
+      if (startX + ship.length > this.rows || startX < 0) return false;
 
       //if cells are not empty, return false
       for (let i = 0; i < ship.length; i++) {
         if (!this.board[startX + i][startY].isEmpty) return false;
       }
 
-      //if cells are empty, mark isEmpty as false
+      //if cells are empty, place the ship
       for (let i = 0; i < ship.length; i++) {
         this.board[startX + i][startY].ship = ship;
       }
     } else if (direction === "horizontal") {
       //if coordinates exceed the board, return false
-      if (startY + ship.length > this.rows || startY < 0) return false;
+      if (startY + ship.length > this.columns || startY < 0) return false;
 
       //if cells are not empty, return false
       for (let i = 0; i < ship.length; i++) {
         if (!this.board[startX][startY + i].isEmpty) return false;
       }
 
-      //if cells are empty, mark isEmpty as false
+      //if cells are empty, place the ship
       for (let i = 0; i < ship.length; i++) {
         this.board[startX][startY + i].ship = ship;
       }
@@ -59,7 +59,7 @@ export class Gameboard {
 
   receiveAttack(x, y) {
     //checking if attack exceeds boundaries
-    if (x >= this.rows || y >= this.columns) return false;
+    if (x >= this.rows || y >= this.columns || x < 0 || y < 0) return false;
 
     //already hit this cell
     if (this.board[x][y].isHit) return false;
@@ -69,7 +69,7 @@ export class Gameboard {
       this.board[x][y].ship.hit();
       return true;
     } else {
-      this.missedAttack.push([x, y]);
+      this.missedAttacks.push([x, y]);
       return false;
     }
   }

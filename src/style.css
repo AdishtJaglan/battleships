@@ -1,5 +1,36 @@
 body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   margin: 0;
-  background-color: black;
-  color: white;
+  font-family: Arial, sans-serif;
+}
+
+#game-container {
+  display: flex;
+  gap: 20px;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(10, 30px);
+  grid-template-rows: repeat(10, 30px);
+  gap: 2px;
+}
+
+.cell {
+  width: 30px;
+  height: 30px;
+  background-color: lightblue;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.cell.hit {
+  background-color: red;
+}
+
+.cell.miss {
+  background-color: white;
 }

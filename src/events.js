@@ -1,5 +1,7 @@
 import { updateBoard } from "./dom";
 
+let isGameOver = false;
+
 export function handleAttack(
   event,
   player,
@@ -8,6 +10,10 @@ export function handleAttack(
   opponentBoardElement
 ) {
   const { target } = event;
+
+  if (isGameOver) {
+    return;
+  }
 
   if (target.classList.contains("cell")) {
     const row = parseInt(target.dataset.row);
@@ -20,12 +26,14 @@ export function handleAttack(
 
       if (opponent.gameboard.allShipsSunk()) {
         alert("Player wins");
+        isGameOver = true;
       } else {
         opponent.randomAttack(player);
         updateBoard(boardElement, player.gameboard);
 
         if (player.gameboard.allShipsSunk()) {
           alert("Computer wins");
+          isGameOver = true;
         }
       }
     }

@@ -21,7 +21,7 @@ computerBoardElement.addEventListener("click", (event) => {
     event,
     player,
     computer,
-    computerBoardElement,
-    playerBoardElement
+    playerBoardElement,
+    computerBoardElement
   );
 });

@@ -59,10 +59,10 @@ export class Gameboard {
 
   receiveAttack(x, y) {
     //checking if attack exceeds boundaries
-    if (x >= this.rows || y >= this.columns || x < 0 || y < 0) return false;
+    if (x >= this.rows || y >= this.columns || x < 0 || y < 0) return null;
 
     //already hit this cell
-    if (this.board[x][y].isHit) return false;
+    if (this.board[x][y].isHit) return null;
 
     this.board[x][y].isHit = true;
     if (this.board[x][y].ship) {

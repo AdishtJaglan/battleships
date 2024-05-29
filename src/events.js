@@ -7,15 +7,15 @@ export function handleAttack(
   boardElement,
   opponentBoardElement
 ) {
-  const target = event.target;
+  const { target } = event;
 
   if (target.classList.contains("cell")) {
-    const row = target.data.row;
-    const column = target.data.column;
+    const row = parseInt(target.dataset.row);
+    const column = parseInt(target.dataset.column);
 
-    const attackSuccessful = player.attack(opponent, row, column);
+    const playerAttackSuccessful = player.attack(opponent, row, column);
 
-    if (attackSuccessful) {
+    if (playerAttackSuccessful !== null) {
       updateBoard(opponentBoardElement, opponent.gameboard);
 
       if (opponent.gameboard.allShipsSunk()) {
@@ -25,7 +25,7 @@ export function handleAttack(
         updateBoard(boardElement, player.gameboard);
 
         if (player.gameboard.allShipsSunk()) {
-          alert("computer wins");
+          alert("Computer wins");
         }
       }
     }

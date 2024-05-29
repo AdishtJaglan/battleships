@@ -16,8 +16,8 @@ export function updateBoard(boardElement, gameboard) {
   const cells = boardElement.getElementsByClassName("cell");
 
   Array.from(cells).forEach((cell) => {
-    const row = cell.dataset.row;
-    const column = cell.dataset.column;
+    const row = parseInt(cell.dataset.row, 10);
+    const column = parseInt(cell.dataset.column, 10);
     const cellData = gameboard.board[row][column];
 
     if (cellData.isHit) {

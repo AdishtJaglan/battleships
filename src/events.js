@@ -9,33 +9,31 @@ export function handleAttack(
   boardElement,
   opponentBoardElement
 ) {
-  const { target } = event;
+  if (isGameOver) return;
 
-  if (isGameOver) {
+  const { target } = event;
+  if (!target.classList.contains("cell")) return;
+
+  const row = parseInt(target.dataset.row);
+  const column = parseInt(target.dataset.column);
+
+  const playerAttackSuccessful = player.attack(opponent, row, column);
+
+  if (playerAttackSuccessful === null) return;
+
+  updateBoard(opponentBoardElement, opponent.gameboard);
+
+  if (opponent.gameboard.allShipsSunk()) {
+    alert("Player wins");
+    isGameOver = true;
     return;
   }
 
-  if (target.classList.contains("cell")) {
-    const row = parseInt(target.dataset.row);
-    const column = parseInt(target.dataset.column);
+  opponent.randomAttack(player);
+  updateBoard(boardElement, player.gameboard);
 
-    const playerAttackSuccessful = player.attack(opponent, row, column);
-
-    if (playerAttackSuccessful !== null) {
-      updateBoard(opponentBoardElement, opponent.gameboard);
-
-      if (opponent.gameboard.allShipsSunk()) {
-        alert("Player wins");
-        isGameOver = true;
-      } else {
-        opponent.randomAttack(player);
-        updateBoard(boardElement, player.gameboard);
-
-        if (player.gameboard.allShipsSunk()) {
-          alert("Computer wins");
-          isGameOver = true;
-        }
-      }
-    }
+  if (player.gameboard.allShipsSunk()) {
+    alert("Computer wins");
+    isGameOver = true;
   }
 }

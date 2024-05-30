@@ -74,6 +74,21 @@ export class Gameboard {
     }
   }
 
+  isValidPlacement(ship, startX, startY, direction) {
+    if (direction === "vertical") {
+      if (startX + ship.length > this.rows || startX < 0) return false;
+      for (let i = 0; i < ship.length; i++) {
+        if (!this.board[startX + i][startY].isEmpty) return false;
+      }
+    } else if (direction === "horizontal") {
+      if (startY + ship.length > this.columns || startY < 0) return false;
+      for (let i = 0; i < ship.length; i++) {
+        if (!this.board[startX][startY + i].isEmpty) return false;
+      }
+    }
+    return true;
+  }
+
   allShipsSunk() {
     return this.ships.every((ship) => ship.isSunk());
   }

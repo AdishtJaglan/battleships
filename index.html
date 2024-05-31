@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Battleship Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Teko:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav>
+      <p>Battleship</p>
+      <p>By Adisht</p>
+    </nav>
+
+    <div id="game-container">
+      <div id="player-board" class="board"></div>
+      <div id="computer-board" class="board"></div>
+    </div>
+
+    <div id="controls">
+      <button id="randomize-button">Randomize</button>
+      <button id="start-button" disabled>Start</button>
+    </div>
+
+    <div id="winnerModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p id="winnerMessage"></p>
+      </div>
+    </div>
+    <script src="bundle.js"></script>
+  <script defer src="main.js"></script></body>
+</html>

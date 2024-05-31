@@ -43,13 +43,13 @@ To run this project locally, follow these steps:
 2. Install dependencies
 
    ```bash
-       npm install
+    npm install
    ```
 
 3. Run it locally
 
    ```bash
-       npm run start
+    npm run start
    ```
 
 ## Usage

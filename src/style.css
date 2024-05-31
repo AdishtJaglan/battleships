@@ -1,7 +1,7 @@
 body {
   height: 100vh;
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: "Chakra Petch", sans-serif;
 
   display: grid;
   grid-template-columns: 1fr 7fr;
@@ -66,7 +66,7 @@ nav {
   justify-content: space-between;
   align-items: center;
 
-  padding: 30px;
+  padding: 20px;
   background-color: #023047;
   color: #dad7cd;
 }
@@ -117,4 +117,16 @@ button:hover {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+nav p:nth-child(1) {
+  font-size: 2em;
+  font-weight: 600;
+  font-family: "Teko", sans-serif;
+}
+
+nav p:nth-child(2) {
+  font-size: 1.5em;
+  font-weight: 500;
+  font-family: "Teko", sans-serif;
 }

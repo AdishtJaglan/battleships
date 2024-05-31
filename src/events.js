@@ -1,4 +1,5 @@
 import { updateBoard } from "./dom";
+import { showWinnerModal } from "./winnerDisplay";
 
 let isGameOver = false;
 
@@ -24,7 +25,7 @@ export function handleAttack(
   updateBoard(opponentBoardElement, opponent.gameboard);
 
   if (opponent.gameboard.allShipsSunk()) {
-    alert("Player wins");
+    showWinnerModal("Player wins!");
     isGameOver = true;
     return;
   }
@@ -33,7 +34,7 @@ export function handleAttack(
   updateBoard(boardElement, player.gameboard);
 
   if (player.gameboard.allShipsSunk()) {
-    alert("Computer wins");
+    showWinnerModal("Computer wins!");
     isGameOver = true;
   }
 }

@@ -6,6 +6,8 @@ body {
   display: grid;
   grid-template-columns: 1fr 7fr;
   grid-template-rows: 1fr 9fr;
+
+  background-color: #dad7cd;
 }
 
 #game-container {
@@ -29,9 +31,13 @@ body {
 .cell {
   width: 30px;
   height: 30px;
-  background-color: lightblue;
+  background-color: #8ecae6;
   border: 1px solid #ddd;
   cursor: pointer;
+}
+
+.cell:hover {
+  background-color: #023047;
 }
 
 .cell.hit {
@@ -61,4 +67,19 @@ nav {
   align-items: center;
 
   padding: 30px;
+  background-color: #023047;
+  color: #dad7cd;
+}
+
+button {
+  width: 70%;
+  height: 5%;
+
+  outline: none;
+  border: none;
+  border-radius: 6px;
+}
+
+button:hover {
+  background-color: #8ecae6;
 }
